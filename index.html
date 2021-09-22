@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="mainFrame" class="mainFrame">
+        <div class="stat">
+            <div id="stat_hungry"></div>
+            <span>Faim</span>
+            <div id="stat_stamina"></div>
+            <span>Santé</span>
+            <div id="stat_fun"></div>
+            <span>Amusement</span>
+            <div id="status" class="status d-none">
+                <img src="img/burn.jpg" alt="">
+            </div>
+        </div>
+        <div class="tamagochi">
+            <img src="img/airmure.png" alt="">
+        </div>
+    </div>
+    <div class="button">
+        <button id="buttonHungry" onclick="actionTama('hungry')">Poké bowl</button>
+        <!-- <button onclick="actionTama('stamina')">Centre pokémon</button> -->
+        <button id="buttonFun" onclick="actionTama('fun')">Combat pour le divertissement</button>
+    </div>
+    <div class="action">
+        <button id="buttonStockPc" onclick="closeLight()">Emmener au centre pokémon</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

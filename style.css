@@ -1,0 +1,44 @@
+.mainFrame {
+    border:1px solid black;
+    height:500px;
+    width:500px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.status img {
+    width:50px;
+    height: 50px;
+}
+.stat {
+    display: flex;
+    justify-content: space-evenly;
+}
+.tamagochi {
+    display:flex;
+    align-self: center;
+}
+.stat>div {
+    height:50px;
+    width:50px;
+    border:1px solid black;
+    display:flex;
+}
+
+.night {
+    background-color:grey;
+}
+.status.d-none {
+    display:none;
+}
+button {
+    background-color: red;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+#buttonStockPc {
+    background-color: grey;
+    border-radius: 15px;
+    padding: 15px;
+}
