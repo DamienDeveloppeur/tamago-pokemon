@@ -1,23 +1,29 @@
 window.onload = function (){
     // API METEO
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == XMLHttpRequest.DONE) {   
-               if (xmlhttp.status == 200) {
-                   console.log(xmlhttp.responseText);
-               }
-               else if (xmlhttp.status == 400) {
-                  alert('There was an error 400');
-               }
-               else {
-                   alert('something else other than 200 was returned');
-               }
-            }
-        };
-        xmlhttp.open("GET", "api.openweathermap.org/data/2.5/weather?q=montpellier&appid=dced8c7e19301276fcf28e033a299134", true);
-        xmlhttp.send();
- 
+
 }
+
+function api() {
+    var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == XMLHttpRequest.DONE) {   
+             if (xmlhttp.status == 200) {
+                 console.log(xmlhttp.responseText);
+             }
+             else if (xmlhttp.status == 400) {
+                alert('There was an error 400');
+             }
+             else {
+                 alert('something else other than 200 was returned');
+             }
+          }
+      };
+      xmlhttp.open("GET", "https://api.openweathermap.org/data/2.5/weather?q=montpellier&appid=dced8c7e19301276fcf28e033a299134", true);
+      xmlhttp.send();
+  }
+
+
+api();
 let stat = {hungry: 100, stamina: 100, fun : 50, exp : 0};
 const divs = {
     hungry : document.getElementById("stat_hungry"),
@@ -25,13 +31,15 @@ const divs = {
     fun : document.getElementById("stat_fun"),
     exp : document.getElementById("stat_exp")
 }
+const foePokemon = [
+    {"name" : "miaous",
+     "level" : 1,
+    "img" : "miaous.jpg",
+    "damage" : 4}
+]
 
-let burned = false;
-let stored = false;
+let burned = false,stored = false, berries = 5, level = 1;
 let timer = 1000;
-let berries = 5;
-let level = 1;
-
 var interval = null;
 intervalManager(true)
 function intervalManager(flag) {
@@ -59,7 +67,6 @@ function actionTama(param) {
         berries--;
     } 
     if(param == "fun") {
-        console.log(stat.exp)
         if(stat.exp == 90) {
             level += 1;
             stat.exp = 0;
@@ -67,14 +74,17 @@ function actionTama(param) {
             stat.exp += 10;
         }
         
+        // select random pokémon
+        let max = foePokemon.length;
+        console.log(max)
+        if(getRandomInt(3) == 2) {
+            burned = true;
+            document.getElementById("status").classList.remove("d-none");
+            verifGameOver();
+        }
         if(stat.fun + 10 < 100) {
             stat.fun += 10;
             if(getRandomInt(10) == 4) berries++;
-            if(getRandomInt(3) == 2) {
-                burned = true;
-                document.getElementById("status").classList.remove("d-none");
-                verifGameOver();
-            }
         } else {
             stat.fun = 100;
         }
@@ -82,28 +92,29 @@ function actionTama(param) {
 }
 
 function closeLight(){
-    if (document.querySelector("#mainFrame").classList.contains('night')) {
+    let buttonHungry = document.getElementById("buttonHungry");
+    let buttonFun = document.getElementById("buttonFun");
+    document.getElementById("mainFrame").classList.toggle("night");
+    if (stored) {
         stored = false;
-        document.getElementById("mainFrame").classList.remove("night");
         document.getElementById("buttonStockPc").innerHTML = "Emmener au centre pokémon";
 
-        document.getElementById("buttonHungry").disabled = false;
-        document.getElementById("buttonFun").disabled = false;
+        buttonHungry.disabled = false;
+        buttonFun.disabled = false;
        
-        document.getElementById("buttonHungry").setAttribute("onclick", "actionTama('hungry')")
-        document.getElementById("buttonFun").setAttribute("onclick", "actionTama('fun')")
+        buttonHungry.setAttribute("onclick", "actionTama('hungry')")
+        buttonFun.setAttribute("onclick", "actionTama('fun')")
     } else {
         stored = true;
         burned = false;
         document.getElementById("status").classList.add("d-none");
-        document.getElementById("mainFrame").classList.add("night");
         document.getElementById("buttonStockPc").innerHTML = "Retirer du centre pokémon";
 
-        document.getElementById("buttonHungry").disabled = true;
-        document.getElementById("buttonFun").disabled = true;
+        buttonHungry.disabled = true;
+        buttonFun.disabled = true;
         
-        document.getElementById("buttonHungry").setAttribute("onclick", "")
-        document.getElementById("buttonFun").setAttribute("onclick", "")
+        buttonHungry.setAttribute("onclick", "")
+        buttonFun.setAttribute("onclick", "")
     }
 }
 
