@@ -8,30 +8,49 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="mainFrame" class="mainFrame">
-        <div class="stat">
-            <div id="stat_hungry"></div>
-            <span>Faim</span>
-            <div id="stat_stamina"></div>
-            <span>Santé</span>
-            <div id="stat_fun"></div>
-            <span>Amusement</span>
-            <div id="status" class="status d-none">
-                <img src="img/burn.jpg" alt="">
+    <div id="main">
+        <div class="left">
+            <div id="mainFrame" class="mainFrame">
+                <div class="stat">
+                    <div id="stat_hungry"></div>
+                    <span>Faim</span>
+                    <div id="stat_stamina"></div>
+                    <span>Santé</span>
+                    <div id="stat_fun"></div>
+                    <span>Amusement</span>
+                    <div id="status" class="status d-none">
+                        <img src="img/burn.jpg" alt="">
+                    </div>
+                </div>
+                <div class="tamagochi">
+                    <img src="img/airmure.png" alt="">
+                </div>
+                <div id="gameOver">
+                    
+                </div>
+            </div>
+            <div class="button">
+                <button id="buttonHungry" onclick="actionTama('hungry')">Donner une baie</button>
+                <!-- <button onclick="actionTama('stamina')">Centre pokémon</button> -->
+                <button id="buttonFun" onclick="actionTama('fun')">Combat pour le divertissement</button>
+            </div>
+            <div class="action">
+                <button id="buttonStockPc" onclick="closeLight()">Emmener au centre pokémon</button>
             </div>
         </div>
-        <div class="tamagochi">
-            <img src="img/airmure.png" alt="">
+        <div class="right">
+            <div class="berries" id="berries">
+            </div>
+            <button onClick="save()">Sauvegarder ma partie</button>
+            <button>Nouvelle partie</button>
+            <button onClick="getSave()">Reprendre la partie sauvegardé</button>
+            <div class="expe">
+
+            </div>
         </div>
     </div>
-    <div class="button">
-        <button id="buttonHungry" onclick="actionTama('hungry')">Poké bowl</button>
-        <!-- <button onclick="actionTama('stamina')">Centre pokémon</button> -->
-        <button id="buttonFun" onclick="actionTama('fun')">Combat pour le divertissement</button>
-    </div>
-    <div class="action">
-        <button id="buttonStockPc" onclick="closeLight()">Emmener au centre pokémon</button>
-    </div>
+  
+
     <script src="app.js"></script>
 </body>
 </html>

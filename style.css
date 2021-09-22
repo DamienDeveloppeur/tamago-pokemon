@@ -1,3 +1,6 @@
+#main {
+    display:flex
+}
 .mainFrame {
     border:1px solid black;
     height:500px;
@@ -42,3 +45,28 @@ button {
     border-radius: 15px;
     padding: 15px;
 }
+
+/* .barre-exp {
+    
+}
+.barre-exp .zero {
+
+}
+.barre-exp .dix {
+
+}
+.barre-exp .vingts {
+
+}
+.barre-exp .trente {
+
+}
+.barre-exp .quarente {
+
+}
+.barre-exp .cinquante {
+
+}
+.barre-exp .cinquante {
+
+} */
