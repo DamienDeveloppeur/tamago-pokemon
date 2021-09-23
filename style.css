@@ -17,17 +17,35 @@
     display: flex;
     justify-content: space-evenly;
 }
+.stat_item {
+    display: flex;
+    flex-direction: column;
+}
 .tamagochi {
     display:flex;
     align-self: center;
 }
 .stat>div {
-    height:50px;
+    /* height:50px;
     width:50px;
     border:1px solid black;
-    display:flex;
+    display:flex; */
 }
-
+#stat_hungry {
+    height:100%;
+    width: 0px;
+    background-color:green;
+}
+#stat_stamina{
+    height:100%;
+    width: 0px;
+    background-color:green;
+}
+#stat_fun {
+    height:100%;
+    width: 0px;
+    background-color:green;
+}
 .night {
     background-color:grey;
 }
@@ -45,8 +63,13 @@ button {
     border-radius: 15px;
     padding: 15px;
 }
-
+.mini_barre_exp {
+    width:100px;
+    height:24px;
+    border :1px solid black;
+}
 .barre_exp {
+    animation: 3s linear 1s slidein;
     width:200px;
     height:24px;
     border :1px solid black;
@@ -55,4 +78,15 @@ button {
     height:100%;
     width: 0px;
     background-color:green;
+}
+#gameOver {
+    color: red;
+    font-weight: bold;
+    font-size: 76px;
+}
+
+#berries {
+    color: blue;
+    font-size: 24px;
+    font-weight: bold;
 }

@@ -12,12 +12,31 @@
         <div class="left">
             <div id="mainFrame" class="mainFrame">
                 <div class="stat">
-                    <div id="stat_hungry"></div>
-                    <span>Faim</span>
-                    <div id="stat_stamina"></div>
-                    <span>Santé</span>
-                    <div id="stat_fun"></div>
-                    <span>Amusement</span>
+                    <div class="stat_item">
+                        <div class="mini_barre_exp">
+                            <div id="stat_hungry">
+                            </div>
+                        </div>
+                        <di>Faim</di>
+                    </div>
+                    <div class="stat_item">
+                        <div class="mini_barre_exp">
+                            <div id="stat_stamina">
+
+                            </div>
+                        </div>
+                        <divv>Santé</divv>
+                    </div>
+                    <div class="stat_item">
+                        <div class="mini_barre_exp">
+                            <div id="stat_fun">
+
+                            </div>
+                        </div>
+                        <di>Amusement</di>
+                    </div>
+            
+              
                     <div id="status" class="status d-none">
                         <img src="img/burn.jpg" alt="">
                     </div>
@@ -39,7 +58,7 @@
                 <!-- onclick="actionTama('hungry')" onclick="actionTama('fun')" -->
                 <button id="buttonHungry">Donner une baie</button>
                 <!-- <button onclick="actionTama('stamina')">Centre pokémon</button> -->
-                <button id="buttonFun" >Combat pour le divertissement</button>
+                <button id="buttonFun">Combat pour le divertissement</button>
             </div>
             <div class="action">
                <!-- onclick="closeLight()" -->
@@ -59,13 +78,13 @@
             </div>
             <div class="barre_exp">
                 <div id="cursor" class="cursor">
-
                 </div>
             </div>
         </div>
     </div>
   
     <script defer src="app.js"></script>
+    <script defer src="Utils.js"></script>
     <script src="Pokemon.js"></script>
     <script src="FoePokemon.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

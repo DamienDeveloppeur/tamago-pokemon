@@ -1,4 +1,4 @@
-class Pokemon {
+class Pokemon  {
 
     stat = {hungry: 100, stamina: 100, fun : 50, exp : 0};
     divs = {
@@ -12,10 +12,11 @@ class Pokemon {
         fun : document.getElementById("buttonFun"),
         stockPc : document.getElementById("buttonStockPc"),
     }
-    burned = false
-    stored = false
-    berries = 5
-    level = 1
+    status = {burned : false, stored : false, berries : 5, level : 1};
+    // burned = false
+    // stored = false
+    // berries = 5
+    // level = 1
     // add listener click 
     constructor(){
         for (let i in this.button) {
@@ -27,28 +28,21 @@ class Pokemon {
   
     actionTama(param) {
         console.log(param)
-        if(param == "hungry" && this.stat.hungry + 10 < 100 && this.berries > 0) {
+        if(param == "hungry" && this.stat.hungry + 10 < 100 && this.status.berries > 0) {
             console.log("OK")
             this.stat.hungry += 10;
-            this.berries--;
+            this.status.berries--;
         } 
         if(param == "fun") {
             let fpkmn = new FoePokemon();
-            this.stat.exp += fpkmn.exp_gived;
-            if(this.stat.exp >= 100) {
-                this.level += 1;
-                this.stat.exp = this.stat.exp - 100;
-            } 
-            document.getElementById("cursor").style.width=this.stat.exp * 2 + "px";
-            // select random pokémon
-            //let max = foePokemon.length;
-            
+            this.stat.stamina -= fpkmn.damage;
+            this.gainXp(fpkmn);
             if(this.getRandomInt(3) == 2) {
-                this.burned = true;
+                this.status.burned = true;
                 document.getElementById("status").classList.remove("d-none");
                 this.verifGameOver();
             }
-            if(this.getRandomInt(4) == 2) this.berries++;
+            if(this.getRandomInt(2) == 1) this.status.berries++;
             if(this.stat.fun + 10 < 100) this.stat.fun += 10;
             else this.stat.fun = 100;
             
@@ -57,37 +51,56 @@ class Pokemon {
             let buttonHungry = document.getElementById("buttonHungry");
             let buttonFun = document.getElementById("buttonFun");
             document.getElementById("mainFrame").classList.toggle("night");
-            if (this.stored) {
-                this.stored = false;
+            if (this.status.stored) {
+                this.status.stored = false;
                 document.getElementById("buttonStockPc").innerHTML = "Emmener au centre pokémon";
-        
                 buttonHungry.disabled = false;
                 buttonFun.disabled = false;
-               
-                buttonHungry.setAttribute("onclick", "actionTama('hungry')")
-                buttonFun.setAttribute("onclick", "actionTama('fun')")
             } else {
-                this.stored = true;
-                this.burned = false;
+                this.status.stored = true;
+                this.status.burned = false;
                 document.getElementById("status").classList.add("d-none");
                 document.getElementById("buttonStockPc").innerHTML = "Retirer du centre pokémon";
-        
                 buttonHungry.disabled = true;
                 buttonFun.disabled = true;
-                
-                buttonHungry.setAttribute("onclick", "")
-                buttonFun.setAttribute("onclick", "")
             }
         }
     }
-    getRandomInt(max) {
-        return Math.floor(Math.random() * max);
+    // courbe d'apprentissage 
+    // plus le niveau est elevé, moins on gagne d'xp
+
+    gainXp(fpkmn) {
+        let coeff = parseInt(fpkmn.exp_gived) - parseInt(this.status.level) + 1;
+        if(coeff < 1) coeff = 1;
+        console.log(coeff)
+        this.stat.exp += coeff;
+        if(this.stat.exp >= 100) {
+            this.status.level += 1;
+            this.stat.exp = this.stat.exp - 100;
+        } 
+        document.getElementById("cursor").style.width=this.stat.exp * 2 + "px";
     }
     
     verifGameOver() {
         if(this.stat.hungry <= 0 || this.stat.stamina <= 0 || this.stat.fun <= 0 ) {
                 document.getElementById("gameOver").innerHTML = "GAME OVER"
                 intervalManager(false);
+
+                for (let i in this.button) {
+
+                    let el = this.button[i],
+                    elClone = el.cloneNode(true);
+                    el.parentNode.replaceChild(elClone, el);
+
+                    console.log(this.button[i])
+                    // this.button[i].addEventListener("click", function(event) {
+                    //     event.stopImmediatePropagation();
+                    // }, true);
+                }
+     
             } 
+    }
+    getRandomInt(max) {
+        return Math.floor(Math.random() * max);
     }
 }
