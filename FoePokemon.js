@@ -12,7 +12,7 @@ class FoePokemon  {
         this.img = foePkmn.img;
         this.damage = foePkmn.damage;
         this.exp_gived = foePkmn.exp_gived;
-        
+
         console.log(foePkmn)
         document.getElementById("foePkmn").setAttribute("src", "img/"+foePkmn.img);
         setTimeout(function(){ 
@@ -29,6 +29,11 @@ class FoePokemon  {
         {"name" : "ectoplasma",
          "level" : 3,
         "img" : "ectoplasma.jpg",
+        "damage" : 6,
+        "exp_gived" : 30},
+        {"name" : "roucarnage",
+         "level" : 3,
+        "img" : "roucarnage.jpg",
         "damage" : 6,
         "exp_gived" : 20},
 

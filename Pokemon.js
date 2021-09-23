@@ -35,15 +35,11 @@ class Pokemon {
         if(param == "fun") {
             let fpkmn = new FoePokemon();
             this.stat.exp += fpkmn.exp_gived;
-            if(this.stat.exp >= 100) this.level += 1;
-
-            if(this.stat.exp == 90) {
+            if(this.stat.exp >= 100) {
                 this.level += 1;
-                this.stat.exp = 0;
-            } else {
-                this.stat.exp += 10;
-            }
-            
+                this.stat.exp = this.stat.exp - 100;
+            } 
+            document.getElementById("cursor").style.width=this.stat.exp * 2 + "px";
             // select random pokémon
             //let max = foePokemon.length;
             
@@ -52,12 +48,10 @@ class Pokemon {
                 document.getElementById("status").classList.remove("d-none");
                 this.verifGameOver();
             }
-            if(this.stat.fun + 10 < 100) {
-                this.stat.fun += 10;
-                if(this.getRandomInt(10) == 4) berries++;
-            } else {
-                this.stat.fun = 100;
-            }
+            if(this.getRandomInt(4) == 2) this.berries++;
+            if(this.stat.fun + 10 < 100) this.stat.fun += 10;
+            else this.stat.fun = 100;
+            
         }
         if (param == "stockPc") {
             let buttonHungry = document.getElementById("buttonHungry");
@@ -90,12 +84,8 @@ class Pokemon {
         return Math.floor(Math.random() * max);
     }
     
-
-
     verifGameOver() {
-        if(this.stat.hungry <= 0 ||
-            this.stat.stamina == 0 || this.stat.stamina < 0 ||
-            this.stat.fun == 0 || this.stat.fun < 0) {
+        if(this.stat.hungry <= 0 || this.stat.stamina <= 0 || this.stat.fun <= 0 ) {
                 document.getElementById("gameOver").innerHTML = "GAME OVER"
                 intervalManager(false);
             } 

@@ -46,27 +46,13 @@ button {
     padding: 15px;
 }
 
-/* .barre-exp {
-    
+.barre_exp {
+    width:200px;
+    height:24px;
+    border :1px solid black;
 }
-.barre-exp .zero {
-
+.cursor {
+    height:100%;
+    width: 0px;
+    background-color:green;
 }
-.barre-exp .dix {
-
-}
-.barre-exp .vingts {
-
-}
-.barre-exp .trente {
-
-}
-.barre-exp .quarente {
-
-}
-.barre-exp .cinquante {
-
-}
-.barre-exp .cinquante {
-
-} */
