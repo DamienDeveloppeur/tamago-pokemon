@@ -29,19 +29,21 @@
 
                 </div>
                 <div class="foePokemon">
-                    <img src="img/herb.jpg" alt="">
+                    <img id="foePkmn" src="img/herb.jpg" alt="">
                 </div>
                 <div id="gameOver">
 
                 </div>
             </div>
             <div class="button">
-                <button id="buttonHungry" onclick="actionTama('hungry')">Donner une baie</button>
+                <!-- onclick="actionTama('hungry')" onclick="actionTama('fun')" -->
+                <button id="buttonHungry">Donner une baie</button>
                 <!-- <button onclick="actionTama('stamina')">Centre pokémon</button> -->
-                <button id="buttonFun" onclick="actionTama('fun')">Combat pour le divertissement</button>
+                <button id="buttonFun" >Combat pour le divertissement</button>
             </div>
             <div class="action">
-                <button id="buttonStockPc" onclick="closeLight()">Emmener au centre pokémon</button>
+               <!-- onclick="closeLight()" -->
+                <button id="buttonStockPc" >Emmener au centre pokémon</button>
             </div>
         </div>
         <div class="right">
@@ -51,13 +53,17 @@
             <button onClick="getSave()">Reprendre la partie sauvegardée</button>
             <button onClick="intervalManager(false)">Mettre en pause</button>
             <button onClick="intervalManager(true)">Reprendre la partie</button>
+            <span>Expérience : </span>
             <div id="stat_exp">
 
             </div>
         </div>
     </div>
   
+    <script defer src="app.js"></script>
+    <script src="Pokemon.js"></script>
+    <script src="FoePokemon.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script src="app.js"></script>
 </body>
 </html>
